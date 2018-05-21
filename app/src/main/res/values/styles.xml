@@ -1,0 +1,48 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Repository list styles -->
+    <style name="RepositoryName">
+        <item name="android:textColor">@color/colorRepositoryHeader</item>
+        <item name="android:textSize">@dimen/textview_repository_header_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RepositoryDescription">
+        <item name="android:textColor">@color/colorRepositoryDescription</item>
+        <item name="android:textSize">@dimen/textview_repository_description_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RepositoryStats">
+        <item name="android:textColor">@color/colorRepositoryStats</item>
+        <item name="android:textSize">@dimen/textview_repository_stats_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="UserName" parent="RepositoryName">
+        <item name="android:textColor">@color/colorRepositoryHeader</item>
+        <item name="android:textSize">@dimen/textview_user_name_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="OpenPullRequests">
+        <item name="android:textColor">@color/colorRepositoryStats</item>
+        <item name="android:textSize">@dimen/textview_repository_stats_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ClosedPullRequests">
+        <item name="android:textColor">@color/colorRepositoryDescription</item>
+        <item name="android:textSize">@dimen/textview_repository_stats_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

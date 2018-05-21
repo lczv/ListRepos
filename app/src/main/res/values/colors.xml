@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#343438</color>
+    <color name="colorPrimaryDark">#343438</color>
+    <color name="colorAccent">#3977AA</color>
+
+    <!-- Repository list / details -->
+    <color name="colorRepositoryHeader">#3977AA</color>
+    <color name="colorRepositoryDescription">#000000</color>
+    <color name="colorRepositoryStats">#DF9305</color>
+    <color name="colorRepositoryOwnerFullName">#C2C2C2</color>
+    <color name="colorPullRequestHeader">#F0F0F0</color>
+    <color name="colorError">#EF9A9A</color>
+    <color name="colorRepositoryDetailHeader">#F0F0F0</color>
+</resources>

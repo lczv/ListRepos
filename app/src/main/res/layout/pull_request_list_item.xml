@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/widget_default_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textview_pull_request_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/widget_default_margin"
+        android:layout_marginStart="@dimen/widget_default_margin"
+        android:layout_marginTop="@dimen/widget_default_margin"
+        android:theme="@style/RepositoryName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/pull_request_title" />
+
+    <TextView
+        android:id="@+id/textview_pull_request_description"
+        style="@style/RepositoryDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/widget_default_margin"
+        android:layout_marginStart="@dimen/widget_default_margin"
+        android:layout_marginTop="@dimen/widget_default_margin"
+        android:ems="12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_pull_request_title"
+        tools:text="@string/pull_requests_description" />
+
+    <TextView
+        android:id="@+id/textview_pull_request_opened_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/widget_default_margin"
+
+        android:text="@string/pull_requests_opened_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_pull_request_description" />
+
+    <TextView
+        android:id="@+id/textview_pull_request_closed_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/widget_default_margin"
+        android:text="@string/pull_requests_closed_date"
+        app:layout_constraintLeft_toRightOf="@id/textview_pull_request_opened_date"
+        app:layout_constraintStart_toEndOf="@+id/textview_pull_request_opened_date"
+        app:layout_constraintTop_toBottomOf="@+id/textview_pull_request_description" />
+    
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview_user_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/widget_default_margin"
+        android:layout_marginStart="@dimen/widget_default_margin"
+        android:layout_marginTop="@dimen/widget_medium_margin"
+        android:background="#FFFFFF"
+        android:innerRadius="32dp"
+        android:shape="ring"
+        android:thicknessRatio="0"
+        app:cardCornerRadius="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_pull_request_opened_date"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imageview_user_avatar"
+            android:layout_width="@dimen/imageview_owner_avatar_size"
+            android:layout_height="@dimen/imageview_owner_avatar_size"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_person"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.v7.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/textview_user_name"
+        style="@style/UserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/widget_default_margin"
+        android:layout_marginTop="@dimen/widget_medium_margin"
+        android:gravity="center"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/textview_user_full_name"
+        app:layout_constraintStart_toEndOf="@+id/cardview_user_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/textview_pull_request_opened_date"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="@string/user_name" />
+
+    <TextView
+        android:id="@+id/textview_user_full_name"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="@dimen/widget_default_margin"
+        android:layout_marginStart="@dimen/widget_default_margin"
+        android:gravity="center"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textview_user_name"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/cardview_user_avatar"
+        tools:text="@string/user_full_name" />
+
+    <ImageView
+        android:id="@+id/imageview_pull_request_status"
+        android:layout_width="@dimen/imageview_pull_request_status_size"
+        android:layout_height="@dimen/imageview_pull_request_status_size"
+        android:layout_marginBottom="@dimen/widget_medium_margin"
+        android:layout_marginEnd="@dimen/widget_medium_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

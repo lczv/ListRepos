@@ -1,0 +1,14 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="widget_default_margin">8dp</dimen>
+    <dimen name="widget_medium_margin">16dp</dimen>
+    <dimen name="imageview_owner_avatar_size">64dp</dimen>
+    <dimen name="imageview_pull_request_status_size">32dp</dimen>
+    <dimen name="textview_repository_header_size">22sp</dimen>
+    <dimen name="textview_repository_description_size">14sp</dimen>
+    <dimen name="textview_repository_stats_size">20sp</dimen>
+    <dimen name="textview_open_close_pull_requests_size">18sp</dimen>
+    <dimen name="textview_user_name_size">16sp</dimen>
+    <dimen name="widget_medium_padding">16dp</dimen>
+    <dimen name="linearLayout_default_elevation">16dp</dimen>
+</resources>

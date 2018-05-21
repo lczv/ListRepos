@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout_pull_request_status"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".15"
+        android:background="@color/colorRepositoryDetailHeader"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:gravity="center_vertical"
+        android:padding="@dimen/widget_medium_padding">
+
+        <TextView
+            android:id="@+id/textview_opened_pull_requests"
+            style="@style/OpenPullRequests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/opened_pull_requests" />
+
+        <TextView
+            android:id="@+id/textview_separator"
+            style="@style/ClosedPullRequests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" / " />
+
+        <TextView
+            android:id="@+id/textview_closed_pull_requests"
+            style="@style/ClosedPullRequests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/closed_pull_requests" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_pull_request_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".85"
+        tools:listitem="@layout/pull_request_list_item">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

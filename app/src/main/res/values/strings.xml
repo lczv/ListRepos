@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Desafio Android</string>
+    <string name="repository_name">Repository name</string>
+    <string name="repository_description">Repository description</string>
+    <string name="repository_stars_count">Stars count</string>
+    <string name="repository_forks_count">Forks count</string>
+    <string name="repository_pull_requests_open">Open pull requests</string>
+    <string name="repository_closed_pull_requests">Closed pull requests</string>
+    <string name="pull_request_title">Pull request title</string>
+    <string name="pull_requests_description">Pull request description</string>
+    <string name="pull_requests_opened_date">Opened %1$s</string>
+    <string name="pull_requests_closed_date">Closed %1$s</string>
+    <string name="user_name">User name</string>
+    <string name="user_full_name">Name</string>
+    <string name="user_photo">User photo</string>
+    <string name="connection_error">Connection error, please try again</string>
+    <string name="api_limit_exceeded">API Limit exceeded, please try again later</string>
+    <string name="reload_list">Reload list</string>
+    <string name="loading_data">Loading data&#8230;</string>
+    <string name="opened_pull_requests">%1$s opened</string>
+    <string name="closed_pull_requests">%1$s closed</string>
+    <string name="no_pull_requests_found">No pull requests found</string>
+    <string name="last_pull_request">No more pull requests :)</string>
+    <string name="last_repository">No more repositories :)</string>
+    <string name="sort_options">Sort</string>
+    <string name="sort_by_stars">By stars</string>
+    <string name="sort_by_forks">By forks</string>
+    <string name="sort_by_update">By update</string>
+</resources>
