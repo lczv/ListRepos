@@ -11,8 +11,8 @@ import android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import android.support.test.espresso.intent.rule.IntentsTestRule
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.withId
+import br.com.concrete.desafioandroid.ui.pullRequestList.PullRequestListActivity
 import com.android.study.lczv.listrepos.data.repository.ApiCaller
-import com.android.study.lczv.listrepos.ui.pullRequestList.PullRequestListActivity
 import com.android.study.lczv.listrepos.ui.repositoryList.RepositoryListActivity
 import com.android.study.lczv.listrepos.ui.repositoryList.RepositoryListAdapter
 import com.google.common.io.CharStreams
@@ -26,7 +26,6 @@ import java.io.InputStreamReader
 
 @RunWith(JUnit4::class)
 class RepositoryListTest {
-
 
     @JvmField
     @Rule
@@ -43,7 +42,7 @@ class RepositoryListTest {
         mockWebServer.enqueue(MockResponse().setBody(body))
         ApiCaller.addTestInterceptor(mockWebServer.url("/"))
         activityTestRule.launchActivity(Intent())
-        onView(android.support.test.espresso.matcher.ViewMatchers.withText("android-advancedrecyclerview")).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(ViewMatchers.withText("android-advancedrecyclerview")).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
     @Test
@@ -54,7 +53,7 @@ class RepositoryListTest {
         ApiCaller.addTestInterceptor(mockWebServer.url("/"))
         activityTestRule.launchActivity(Intent())
         onView(withId(R.id.recyclerview_repository_list)).perform(RecyclerViewActions.actionOnItemAtPosition<RepositoryListAdapter.ViewHolder>(10, click()))
-        intended(hasComponent(PullRequestListActivity::class.java.getName()))
+        intended(hasComponent(PullRequestListActivity::class.java.name))
     }
 
 

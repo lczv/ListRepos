@@ -1,42 +1,38 @@
 package com.android.study.lczv.listrepos.ui.pullRequestList
 
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 import com.android.study.lczv.listrepos.data.ApiRequestStatus
 import com.android.study.lczv.listrepos.data.model.PullRequest
 import com.android.study.lczv.listrepos.data.repository.ApiCaller
-import com.android.study.lczv.listrepos.data.repository.GitHubAPI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+class PullRequestListViewModel : ViewModel() {
 
-class PullRequestListPresenter(val api: GitHubAPI) : PullRequestListContract.Presenter {
-
-    var view: PullRequestListContract.View? = null
+    open val status = MutableLiveData<ApiRequestStatus>()
+    open val pullRequests = MutableLiveData<List<PullRequest>>()
+    open val openPullRequestCount = MutableLiveData<Int>()
+    open val closedPullRequestCount = MutableLiveData<Int>()
 
     val itemsPerPage = 30
 
-    override fun onAttach(view: PullRequestListContract.View) {
-        this.view = view
-    }
+    fun loadPullRequestList(owner: String, repository: String, state: String, page: Int) {
+        ApiCaller.api.loadPullRequests(owner, repository, state, page).enqueue(object : Callback<List<PullRequest>> {
 
-    override fun onDetach() {
-        this.view = null
-    }
-
-    override fun loadPullRequests(owner: String, repository: String, state: String, page: Int) {
-
-        api.loadPullRequests(owner, repository, state, page).enqueue(object : Callback<List<PullRequest>> {
 
             override fun onResponse(call: Call<List<PullRequest>>?, response: Response<List<PullRequest>>?) {
 
                 if (response?.code() == 403) {
-                    view?.displayError(owner, repository, ApiRequestStatus.API_LIMIT_EXCEEDED)
+                    status.postValue(ApiRequestStatus.API_LIMIT_EXCEEDED)
                     return
                 }
 
                 if (response?.isSuccessful == true) {
 
-                    view?.displayPullRequests(response.body()!!)
+                    pullRequests.postValue(response?.body())
+                    status.postValue(ApiRequestStatus.SUCCESS)
 
                     if(page==0){
                         countPullRequest(owner, repository, "open")
@@ -44,19 +40,27 @@ class PullRequestListPresenter(val api: GitHubAPI) : PullRequestListContract.Pre
                     }
 
                 } else {
-                    view?.displayError(owner, repository, ApiRequestStatus.ERROR)
+                    status.postValue(ApiRequestStatus.ERROR)
+
                 }
             }
 
             override fun onFailure(call: Call<List<PullRequest>>?, t: Throwable?) {
-                view?.displayError(owner, repository, ApiRequestStatus.ERROR)
+                status.postValue(ApiRequestStatus.ERROR)
             }
 
-        })
 
+        })
     }
 
-    override fun countPullRequest(owner: String, repository: String, state: String) {
+    /**
+     * In order to obtain the number of open / closed PR's,
+     * We need to request the last page from both the open and closed PR's list.
+     * e.g. since the pagination returns 30 items by default, the number of open PR's,
+     * will be (perPageItems * pages) + lastPageItems
+     * */
+
+    fun countPullRequest(owner: String, repository: String, state: String) {
 
         var lastPage = 0
         var pullRequestCount: Int?
@@ -91,9 +95,9 @@ class PullRequestListPresenter(val api: GitHubAPI) : PullRequestListContract.Pre
                                         }
 
                                         if (state.equals("open")) {
-                                            view?.displayOpenPullRequestsCount((response?.body()?.size!!.toInt() + (itemsPerPage * lastPage)))
+                                            openPullRequestCount.postValue((response?.body()?.size!!.toInt() + (itemsPerPage * lastPage)))
                                         } else {
-                                            view?.displayClosedPullRequestsCount((response?.body()?.size!!.toInt() + (itemsPerPage * lastPage)))
+                                            closedPullRequestCount.postValue((response?.body()?.size!!.toInt() + (itemsPerPage * lastPage)))
                                         }
 
                                     }
@@ -101,6 +105,7 @@ class PullRequestListPresenter(val api: GitHubAPI) : PullRequestListContract.Pre
                                 }
                             })
                         }
+
                     }
                 }
 
@@ -110,4 +115,5 @@ class PullRequestListPresenter(val api: GitHubAPI) : PullRequestListContract.Pre
             })
         }
     }
+
 }

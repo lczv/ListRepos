@@ -8,8 +8,8 @@ import android.support.test.espresso.intent.rule.IntentsTestRule
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.support.test.runner.AndroidJUnit4
+import br.com.concrete.desafioandroid.ui.pullRequestList.PullRequestListActivity
 import com.android.study.lczv.listrepos.data.repository.ApiCaller
-import com.android.study.lczv.listrepos.ui.pullRequestList.PullRequestListActivity
 import com.android.study.lczv.listrepos.ui.repositoryList.RepositoryListAdapter
 import com.google.common.io.CharStreams
 import okhttp3.mockwebserver.MockResponse
@@ -52,11 +52,8 @@ class PullRequestListTest {
 
         val mockWebServer = MockWebServer()
 
-        val assets = InstrumentationRegistry.getContext().assets
-        val body = CharStreams.toString(InputStreamReader(assets.open("json/pullRequests.json")))
         mockWebServer.enqueue(MockResponse().setBody("{[]}"))
         ApiCaller.addTestInterceptor(mockWebServer.url("/"))
-
 
         val intent = Intent()
         intent.putExtra(RepositoryListAdapter.EXTRA_OWNER, "")

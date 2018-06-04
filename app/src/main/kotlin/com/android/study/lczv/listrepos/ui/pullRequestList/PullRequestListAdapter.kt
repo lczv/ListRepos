@@ -108,10 +108,10 @@ class PullRequestListAdapter(val listener: LoadMorePullRequestsListener) : Recyc
             val newDate: String
 
             try {
-                dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-                dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+                dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+                dateFormat.timeZone = TimeZone.getTimeZone("UTC")
                 formattedDate = dateFormat.parse(originalDate);
-                newDate = SimpleDateFormat("dd-MM-yyyy").format(formattedDate);
+                newDate = SimpleDateFormat("dd-MM-yyyy").format(formattedDate)
             } catch (exception: Exception) {
                 return " - "
             }
@@ -133,7 +133,6 @@ class PullRequestListAdapter(val listener: LoadMorePullRequestsListener) : Recyc
 
         }
     }
-
 
     interface LoadMorePullRequestsListener {
         fun loadMorePullRequests(owner: String, repository: String, state: String, lastPage: Int)

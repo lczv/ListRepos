@@ -17,7 +17,6 @@ class RepositoryListAdapter(val listener: LoadMoreRepositoriesListener) : Recycl
     var currentPage = 1
     private val itemsPerPage = 30
     lateinit var sorting: String
-//    var listEnded = false
 
     companion object {
         const val EXTRA_OWNER = "EXTRA_OWNER"
@@ -51,7 +50,7 @@ class RepositoryListAdapter(val listener: LoadMoreRepositoriesListener) : Recycl
 
         if (position == (itemsPerPage * currentPage)) {
             currentPage++
-            listener.loadMoreRepositories(currentPage, sorting)
+            listener.loadMoreRepositories(currentPage)
         }
 
         if (getItemViewType(position) == 0) {
@@ -61,6 +60,11 @@ class RepositoryListAdapter(val listener: LoadMoreRepositoriesListener) : Recycl
     }
 
     override fun getItemViewType(position: Int): Int {
+
+        // Layout to be inflated when there are no more pull requests
+//        if (listEnded && position == repositories.size) {
+//            return 3
+//        }
 
         // Default layout to inflate when the list is empty
         if (repositories.isEmpty()) {
@@ -102,14 +106,8 @@ class RepositoryListAdapter(val listener: LoadMoreRepositoriesListener) : Recycl
 
     }
 
-    fun clearList() {
-        repositories.clear()
-        notifyDataSetChanged()
-        currentPage = 1
-    }
-
     interface LoadMoreRepositoriesListener {
-        fun loadMoreRepositories(currentPage: Int, sorting: String)
+        fun loadMoreRepositories(currentPage: Int)
     }
 
 }
